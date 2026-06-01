@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traditional Converter – Pengukuran Tradisional Nusantara</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --brown-darkest: #2c1810;
+    --brown-dark:    #4e342e;
+    --brown-mid:     #6d4c41;
+    --brown-light:   #a1887f;
+    --brown-pale:    #d7ccc8;
+    --cream:         #f5efe6;
+    --gold:          #c9a84c;
+    --gold-light:    #e8d5a3;
+    --white-glass:   rgba(255,255,255,0.72);
+    --dark-glass:    rgba(44,24,16,0.72);
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+    background-image: url('engklek3.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--brown-darkest);
+    backdrop-filter: blur(3px);
+}
+
+/* ===== SLIDE SYSTEM ===== */
+.slide {
+    width: 100%;
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    animation: slideIn 0.5s ease;
+}
+.slide.active { display: flex; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== BUTTONS ===== */
+button {
+    padding: 11px 24px;
+    border: none;
+    border-radius: 30px;
+    background: var(--brown-mid);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.3px;
+}
+button:hover {
+    background: var(--brown-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(78,52,46,0.35);
+}
+button.btn-gold {
+    background: var(--gold);
+    color: var(--brown-darkest);
+}
+button.btn-gold:hover {
+    background: #b8933a;
+    color: #fff;
+}
+button.btn-outline {
+    background: var(--white-glass);
+    border: 2px solid var(--brown-mid);
+    color: var(--brown-mid);
+}
+button.btn-outline:hover {
+    background: var(--brown-mid);
+    color: #fff;
+}
+
+/* ===== ===== ===== ===== ===== =====
+   SLIDE 1 — HOMEPAGE
+===== ===== ===== ===== ===== ===== */
+
+/* --- NAVBAR --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 48px;
+    background: var(--dark-glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.navbar-logo {
+    font-size: 26px;
+    line-height: 1;
+}
+.navbar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    line-height: 1.3;
+    max-width: 160px;
+}
+.navbar-nav {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+.navbar-nav a {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: var(--brown-pale);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.navbar-nav a:hover { color: var(--gold); }
+.navbar-cta {
+    padding: 10px 22px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.navbar-cta:hover {
+    background: var(--gold);
+    color: var(--brown-darkest);
+}
+
+/* --- HERO --- */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 82vh;
+    overflow: hidden;
+}
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 56px;
+    background: rgba(245,239,230,0.2);
+    backdrop-filter: blur(4px);
+}
+.hero-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    background: var(--brown-mid);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 66px);
+    font-weight: 900;
+    color: var(--brown-dark);
+    line-height: 1.12;
+    margin-bottom: 18px;
+}
+.hero-desc {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    color: var(--brown-darkest);
+    line-height: 1.75;
+    max-width: 400px;
+    margin-bottom: 36px;
+}
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.btn-hero-primary {
+    background: var(--brown-dark);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-hero-primary:hover { background: var(--brown-darkest); }
+
+.hero-right {
+    position: relative;
+    background: linear-gradient(135deg, var(--brown-darkest) 0%, #5d4037 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(245,239,230,0.18) 0%, transparent 60%);
+}
+.hero-visual {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.hero-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    position: relative;
+}
+.hero-panel-bg {
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/></svg>') center/cover;
+}
+.panel-divider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.panel-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(44,24,16,0.78);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    white-space: nowrap;
+    text-align: center;
+    width: max-content;
+}
+/* Decorative measurement lines in hero */
+.measure-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.6;
+}
+.measure-line::before,
+.measure-line::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    width: 2px;
+    height: 14px;
+    background: var(--gold);
+    opacity: 0.8;
+}
+.measure-line::before { left: 0; }
+.measure-line::after  { right: 0; }
+
+/* Hero placeholder illustration (since we can't load actual images) */
+.hero-illustration {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.illus-person {
+    font-size: 90px;
+    filter: sepia(0.6);
+    user-select: none;
+}
+
+/* --- FEATURES BAR --- */
+.features-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--brown-darkest);
+    padding: 24px 48px;
+    gap: 0;
+}
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 24px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+.feature-item:last-child { border-right: none; }
+.feature-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.feature-text h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+    font-family: 'Nunito', sans-serif;
+}
+.feature-text p {
+    font-size: 12px;
+    color: var(--brown-pale);
+    line-height: 1.5;
+}
+
+/* --- CONCEPT SECTION --- */
+.concept-section {
+    padding: 72px 48px;
+    background: rgba(245,239,230,0.0);
+    /* backdrop-filter: blur(2px); */
+}
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.section-label-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+}
+.section-label-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--dark-glass);
+    text-transform: uppercase;
+    font-family: 'Nunito', sans-serif;
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--brown-dark);
+    text-align: center;
+    margin-bottom: 52px;
+}
+
+.unit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.unit-card {
+    background: rgba(255,255,255,0.82);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(78,52,46,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.unit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(78,52,46,0.2);
+}
+.unit-card-emoji {
+    font-size: 52px;
+    line-height: 1;
+}
+.unit-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--brown-dark);
+}
+.unit-card p {
+    font-size: 13px;
+    color: var(--brown-mid);
+    line-height: 1.6;
+    flex: 1;
+}
+.btn-selengkapnya {
+    background: transparent;
+    border: 1.5px solid var(--brown-light);
+    color: var(--brown-mid);
+    font-size: 13px;
+    padding: 9px 22px;
+    border-radius: 20px;
+}
+.btn-selengkapnya:hover {
+    background: var(--brown-mid);
+    color: #fff;
+    border-color: var(--brown-mid);
+}
+
+/* --- CTA FOOTER STRIP --- */
+.cta-strip {
+    margin: 0 48px 60px;
+    background: linear-gradient(135deg, var(--cream) 60%, var(--gold-light));
+    border-radius: 20px;
+    padding: 36px 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 8px 32px rgba(78,52,46,0.15);
+    border: 1px solid rgba(201,168,76,0.35);
+}
+.cta-icon-wrap {
+    width: 60px;
+    height: 60px;
+    background: var(--brown-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+.cta-text { flex: 1; }
+.cta-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--brown-dark);
+    margin-bottom: 6px;
+}
+.cta-text p {
+    font-size: 14px;
+    color: var(--brown-mid);
+    line-height: 1.6;
+    max-width: 520px;
+}
+.btn-cta-main {
+    background: var(--brown-darkest);
+    color: var(--gold-light);
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 14px 28px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-cta-main:hover { background: var(--brown-dark); }
+
+/* ===== ===== ===== ===== ===== =====
+   SLIDES 2/3/4 — MATERI + KALKULATOR
+===== ===== ===== ===== ===== ===== */
+
+.materi-page {
+    min-height: 100vh;
+    background: rgba(245,239,230,0.93);
+    backdrop-filter: blur(10px);
+}
+
+/* Page header */
+.page-header {
+    background: var(--dark-glass);
+    backdrop-filter: blur(12px);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+.page-header-back {
+    background: transparent;
+    border: 1.5px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    padding: 8px 18px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+.page-header-back:hover {
+    background: rgba(201,168,76,0.15);
+    transform: none;
+    box-shadow: none;
+}
+.page-header-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 22px;
+    flex: 1;
+}
+.page-header-sub {
+    font-size: 13px;
+    color: var(--brown-pale);
+    font-family: 'Lora', serif;
+    font-style: italic;
+}
+
+/* Inner layout */
+.materi-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    display: flex;
+    background: rgba(255,255,255,0.82);
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* Section blocks */
+.materi-block {
+    background: rgba(255,255,255,0.82);
+    border-radius: 18px;
+    padding: 32px 36px;
+    box-shadow: 0 4px 20px rgba(78,52,46,0.10);
+    border: 1px solid rgba(201,168,76,0.18);
+}
+.materi-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--brown-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.materi-block h2 .block-icon { font-size: 24px; }
+.materi-block p {
+    font-size: 15px;
+    color: var(--brown-mid);
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+.materi-block ul {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+.materi-block ul li {
+    font-size: 14px;
+    color: var(--brown-mid);
+    line-height: 1.9;
+}
+
+/* Fact highlight box */
+.fact-box {
+    background: linear-gradient(135deg, var(--cream), var(--gold-light));
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--brown-dark);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* Formula display */
+.formula-box {
+    background: var(--brown-darkest);
+    color: var(--gold-light);
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+}
+.formula-box span { color: #fff; }
+
+/* Calculator card */
+.calc-card {
+    background: rgba(255,255,255,0.82);
+    border-radius: 18px;
+    padding: 32px 36px;
+    box-shadow: 0 4px 20px rgba(78,52,46,0.10);
+    border: 1px solid rgba(201,168,76,0.18);
+    position: relative;
+    overflow: hidden;
+}
+.calc-card::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#A67B5B 1px, transparent 1px);
+    background-size: 14px 14px;
+    opacity: 0.06;
+    top: 0; left: 0;
+}
+.calc-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--brown-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brown-dark);
+    display: block;
+    margin-bottom: 6px;
+}
+input[type=number] {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--brown-pale);
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--brown-darkest);
+    background: rgba(255,255,255,0.9);
+    transition: border-color 0.2s;
+}
+input[type=number]:focus {
+    outline: none;
+    border-color: var(--brown-mid);
+}
+
+.result {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--brown-dark);
+    font-family: 'Playfair Display', serif;
+    margin: 8px 0 16px;
+}
+
+/* Canvas visualisasi */
+.canvas-wrap {
+    margin-top: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(141,110,99,0.4);
+    position: relative;
+}
+.canvas-wrap.depa-canvas { height: 125px; }
+.canvas-wrap.jengkal-canvas { height: 200px; }
+.canvas-wrap.langkah-canvas { height: 200px; }
+
+/* depa visual elements */
+.fig-body   { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:40px; height:80px; background:#5C4033; border-radius:10px; }
+.fig-head   { position:absolute; bottom:100px; left:50%; transform:translateX(-50%); width:40px; height:40px; background:#d2a679; border-radius:50%; }
+.fig-arms   { position:absolute; bottom:70px; left:50%; height:10px; background:#d2a679; transform:translateX(-50%); width:100px; border-radius:5px; transition:width 0.5s ease; }
+
+/* jengkal visual elements */
+.jengkal-hand  { position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:80px; height:60px; background:#d2a679; border-radius:20px; }
+.jengkal-thumb { position:absolute; width:15px; height:50px; background:#d2a679; left:-10px; bottom:20px; transform-origin:bottom center; transform:rotate(-30deg); border-radius:10px; }
+.jengkal-pinky { position:absolute; width:15px; height:50px; background:#d2a679; right:-10px; bottom:20px; transform-origin:bottom center; transform:rotate(30deg); border-radius:10px; }
+.jengkal-dist  { position:absolute; bottom:120px; left:50%; height:5px; background:#5C4033; transform:translateX(-50%); width:60px; border-radius:5px; transition:width 0.5s; }
+
+.vis-label {
+    text-align: center;
+    font-size: 13px;
+    color: var(--brown-mid);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* ===== JENGKAL CANVAS — MULTI-HAND VISUALIZER ===== */
+.jengkal-canvas{
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+    gap:1px;
+    padding:1px;
+    overflow-x:auto;
+}
+.depa-canvas{
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+    gap:1px;
+    padding:1px;
+    overflow-x:auto;
+}
+.jengkal-item{
+    position:relative;
+    min-width:120px;
+    height:160px;
+    padding-top:20px;
+    flex-shrink:0;
+}
+.depa-item{
+    position:relative;
+    min-width:120px;
+    height:100px;
+    padding-top:20px;
+    flex-shrink:0;
+}
+.hand{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80px;
+    height:60px;
+    background:#d2a679;
+    border-radius:20px;
+}
+.thumb{
+    position:absolute;
+    width:15px;
+    height:50px;
+    background:#d2a679;
+    left:-8px;
+    bottom:20px;
+    transform-origin:bottom center;
+    transform:rotate(-30deg);
+    border-radius:10px;
+}
+.pinky{
+    position:absolute;
+    width:15px;
+    height:50px;
+    background:#d2a679;
+    right:-8px;
+    bottom:20px;
+    transform-origin:bottom center;
+    transform:rotate(30deg);
+    border-radius:10px;
+}
+.distance{
+    position:absolute;
+    bottom:105px;
+    left:50%;
+    transform:translateX(-50%);
+    width:75px;
+    height:5px;
+    background:#5C4033;
+    border-radius:5px;
+}
+
+/* Story problems */
+.soal-block { }
+.soal-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--brown-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.soal-item {
+    background: rgba(255,255,255,0.9);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 18px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(78,52,46,0.08);
+}
+.soal-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.soal-item .soal-text {
+    font-size: 15px;
+    color: var(--brown-dark);
+    line-height: 1.8;
+    font-family: 'Lora', serif;
+    margin-bottom: 14px;
+}
+.soal-toggle {
+    background: transparent;
+    border: 1.5px solid var(--brown-light);
+    color: var(--brown-mid);
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+.soal-toggle:hover {
+    background: var(--brown-mid);
+    color: #fff;
+    border-color: var(--brown-mid);
+    transform: none;
+    box-shadow: none;
+}
+.soal-answer {
+    display: none;
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, var(--cream), rgba(201,168,76,0.12));
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--brown-dark);
+    line-height: 1.8;
+    border: 1px dashed rgba(201,168,76,0.5);
+}
+.soal-answer.show { display: block; }
+
+/* Navigation buttons at bottom */
+.nav-btn {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 24px 16px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .features-bar { grid-template-columns: repeat(2, 1fr); }
+    .navbar { padding: 12px 20px; }
+    .navbar-nav { display: none; }
+    .concept-section { padding: 48px 20px; }
+    .cta-strip { margin: 0 20px 48px; padding: 24px; flex-direction: column; }
+    .hero-left { padding: 40px 24px; }
+    .page-header { padding: 14px 20px; }
+    .materi-inner { padding: 28px 16px 60px; }
+    .materi-block { padding: 24px 20px; }
+    .calc-card { padding: 24px 20px; }
+}
+
+@media (max-width: 560px) {
+    .features-bar { grid-template-columns: 1fr; }
+    .unit-cards { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===================================================
+     SLIDE 1 – BERANDA
+=================================================== -->
+<div class="slide active" id="slide1">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">
+      <span class="navbar-logo">🌿</span>
+      <span class="navbar-title">Pengukuran Tradisional Nusantara</span>
+    </a>
+    <!-- <ul class="navbar-nav">
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#">Materi</a></li>
+      <li><a href="#">Konversi</a></li>
+      <li><a href="#">Tentang</a></li>
+    </ul> -->
+    <button class="navbar-cta" onclick="showSlide(2)">Mulai Belajar 📖</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-badge">🪷 Etnomatematika</span>
+      <h1 class="hero-title">Pengukuran<br>Tradisional<br>Nusantara</h1>
+      <p class="hero-desc">
+        Mengenal cara masyarakat tradisional mengukur panjang menggunakan 
+        bagian tubuh — warisan kecerdasan lokal yang kaya makna.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="document.getElementById('konsep').scrollIntoView({behavior:'smooth'})">
+          Jelajahi Materi →
+        </button>
+        <button class="btn-outline" onclick="showSlide(2)">Coba Konversi</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-image-overlay"></div>
+      <!-- Decorative split panel -->
+      <div style="display:flex;width:100%;height:100%;position:relative;">
+        <!-- Panel kiri: tradisional -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(92,64,51,0.35);position:relative;">
+          <div style="font-size:80px;filter:sepia(0.8);">🧍</div>
+          <div style="position:absolute;bottom:50%;right:0;left:0;height:2px;background:rgba(201,168,76,0.5);"></div>
+          <div style="font-size:11px;color:rgba(201,168,76,0.9);letter-spacing:3px;text-transform:uppercase;margin-top:12px;">Satuan Tubuh</div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:14px;background:rgba(44,24,16,0.75);text-align:center;color:var(--gold-light);font-size:13px;font-weight:600;">Sebelum<br><span style="font-size:11px;opacity:0.8;">(Satuan Tradisional)</span></div>
+        </div>
+        <!-- Divider pill -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;background:#fff;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 20px rgba(0,0,0,0.25);">↔</div>
+        <!-- Panel kanan: modern -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(44,24,16,0.55);position:relative;">
+          <div style="font-size:80px;">📏</div>
+          <div style="font-size:11px;color:rgba(201,168,76,0.9);letter-spacing:3px;text-transform:uppercase;margin-top:12px;">Sentimeter</div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:14px;background:rgba(92,64,51,0.85);text-align:center;color:var(--gold-light);font-size:13px;font-weight:600;">Sesudah<br><span style="font-size:11px;opacity:0.8;">(Satuan Modern)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features bar -->
+  <div class="features-bar">
+    <div class="feature-item">
+      <span class="feature-icon">🌺</span>
+      <div class="feature-text">
+        <h4>Berbasis Budaya Lokal</h4>
+        <p>Mengangkat kearifan lokal Nusantara</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🔢</span>
+      <div class="feature-text">
+        <h4>Konsep Matematika</h4>
+        <p>Menghubungkan tradisi dengan matematika modern</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🎓</span>
+      <div class="feature-text">
+        <h4>Edukasi Interaktif</h4>
+        <p>Belajar lebih mudah dan menyenangkan</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🏛️</span>
+      <div class="feature-text">
+        <h4>Pelestarian Budaya</h4>
+        <p>Melestarikan warisan budaya bangsa</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Concept cards -->
+  <section class="concept-section" id="konsep">
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <span class="section-label-text">Konsep Utama</span>
+      <div class="section-label-line"></div>
+    </div>
+    <h2 class="section-title">Satuan Tidak Baku</h2>
+
+    <div class="unit-cards">
+      <div class="unit-card">
+        <div class="unit-card-emoji">🙆</div>
+        <h3>Depa</h3>
+        <p>Rentangan kedua tangan dari ujung jari kiri ke ujung jari kanan.</p>
+        <button class="btn-selengkapnya" onclick="showSlide(2)">Selengkapnya →</button>
+      </div>
+      <div class="unit-card">
+        <div class="unit-card-emoji">✋</div>
+        <h3>Jengkal</h3>
+        <p>Jarak antara ujung ibu jari dan ujung kelingking terbuka.</p>
+        <button class="btn-selengkapnya" onclick="showSlide(3)">Selengkapnya →</button>
+      </div>
+      <div class="unit-card">
+        <div class="unit-card-emoji">👟</div>
+        <h3>Langkah</h3>
+        <p>Jarak yang ditempuh oleh satu langkah kaki.</p>
+        <button class="btn-selengkapnya" onclick="showSlide(4)">Selengkapnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <div class="cta-strip">
+    <div class="cta-icon-wrap">💡</div>
+    <div class="cta-text">
+      <h3>Menghubungkan Budaya Lokal dengan Matematika Modern</h3>
+      <p>Dengan memahami pengukuran tradisional, kita ikut melestarikan budaya dan memperkaya ilmu pengetahuan.</p>
+    </div>
+    <button class="btn-cta-main" onclick="showSlide(2)">Mulai Belajar Sekarang →</button>
+  </div>
+
+</div><!-- /slide1 -->
+
+
+<!-- ===================================================
+     SLIDE 2 – MATERI DEPA
+=================================================== -->
+<div class="slide" id="slide2">
+<div class="materi-page">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <button class="page-header-back" onclick="showSlide(1)">← Beranda</button>
+    <div>
+      <div class="page-header-title">🙆 Satuan Depa</div>
+      <div class="page-header-sub">Etnomatematika · Pengukuran Tradisional</div>
+    </div>
+    <div style="display:flex;gap:10px;margin-left:auto;">
+      <button style="background:transparent;border:1.5px solid rgba(201,168,76,0.4);color:var(--brown-pale);font-size:13px;border-radius:6px;" onclick="showSlide(3)">Jengkal →</button>
+      <button style="background:transparent;border:1.5px solid rgba(201,168,76,0.4);color:var(--brown-pale);font-size:13px;border-radius:6px;" onclick="showSlide(4)">Langkah →</button>
+    </div>
+  </div>
+
+  <div class="materi-inner">
+
+    <!-- Penjelasan -->
+    <div class="materi-block">
+      <h2><span class="block-icon">📖</span> Apa Itu Depa?</h2>
+      <p>
+        <strong>Depa</strong> adalah satuan panjang tradisional yang diukur dari rentangan kedua tangan secara horizontal,
+        mulai dari ujung jari tangan kiri hingga ujung jari tangan kanan. Satuan ini termasuk <em>satuan tidak baku</em>
+        karena nilainya berbeda-beda tergantung tinggi badan seseorang.
+      </p>
+      <p>
+        Dalam kebudayaan Nusantara, depa digunakan oleh para petani, nelayan, dan pengrajin untuk mengukur
+        lahan, tali, kain, dan berbagai kebutuhan sehari-hari sebelum satuan modern diperkenalkan.
+      </p>
+      <ul>
+        <li>Digunakan secara luas di Jawa, Bali, Sunda, dan Madura</li>
+        <li>Setara dengan tinggi badan rata-rata seseorang</li>
+        <li>Nilai rata-rata: <strong>1 depa ≈ 150 cm</strong> (untuk orang dewasa)</li>
+      </ul>
+      <div class="fact-box">
+        💡 Fakta menarik: Dalam tradisi pengukuran lahan sawah, petani Jawa sering menggunakan depa
+        karena mudah digunakan di mana saja tanpa alat khusus.
+      </div>
+    </div>
+
+    <!-- Rumus -->
+    <div class="materi-block">
+      <h2><span class="block-icon">📐</span> Rumus Konversi</h2>
+      <p>Untuk mengubah satuan depa ke sentimeter, gunakan rumus berikut:</p>
+      <div class="formula-box">
+        <span>Centimeter = Jumlah Depa × 150</span>
+        <br><br>
+        Contoh: &nbsp; 3 depa = 3 × 150 = <span>450 cm</span>
+      </div>
+    </div>
+
+    <!-- Kalkulator -->
+    <div class="calc-card">
+      <h2>🧮 Kalkulator Depa Interaktif</h2>
+      <label for="inputDepa">Masukkan jumlah Depa:</label>
+      <input type="number" id="inputDepa" placeholder="Contoh: 2" min="0">
+      <div class="result" id="hasilDepa">0 cm</div>
+
+      <div class="canvas-wrap depa-canvas" id="depaCanvas" style="min-height:160px;">
+        
+      </div>
+      <div class="vis-label">Visualisasi rentangan tangan (Depa)</div>
+    </div>
+
+    <!-- Soal cerita engklek -->
+    <div class="materi-block soal-block">
+      <h2><span class="block-icon">🎮</span> Soal Cerita: Permainan Engklek</h2>
+
+      <div class="soal-item">
+        <h4>Soal 1</h4>
+        <div class="soal-text">
+          Siti dan teman-temannya bermain engklek di halaman rumah. Mereka membuat lapangan engklek
+          berbentuk kotak-kotak menggunakan satuan depa. Lebar lapangan engklek adalah <strong>2 depa</strong>
+          dan panjangnya <strong>4 depa</strong>. Berapa luas lapangan engklek tersebut dalam sentimeter persegi?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Lebar = 2 depa = 2 × 150 = 300 cm<br>
+          • Panjang = 4 depa = 4 × 150 = 600 cm<br>
+          • Luas = Panjang × Lebar = 600 × 300 = <strong>180.000 cm²</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 2</h4>
+        <div class="soal-text">
+          Dalam permainan engklek, Budi harus melompati 3 kotak secara berurutan.
+          Setiap kotak memiliki sisi sebesar <strong>1 depa</strong>. Jika Budi memulai dari tepi pertama kotak
+          hingga tepi terakhir kotak ke-3, berapa jarak total yang ditempuh Budi dalam meter?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • 3 kotak × 1 depa = 3 depa<br>
+          • 3 depa = 3 × 150 = 450 cm<br>
+          • 450 cm ÷ 100 = <strong>4,5 meter</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 3</h4>
+        <div class="soal-text">
+          Anak-anak membuat lapangan engklek berukuran <strong>3 depa × 2 depa</strong>.
+          Di sekelilingnya akan diberi tali sebagai batas. Berapa panjang tali yang diperlukan?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Panjang = 3 depa = 3 × 150 = 450 cm<br>
+          • Lebar = 2 depa = 2 × 150 = 300 cm<br>
+          • Keliling = 2 × (450 + 300) = 2 × 750 = <strong>1.500 cm = 15 meter</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-btn">
+      <button onclick="showSlide(1)">← Beranda</button>
+      <button class="btn-gold" onclick="showSlide(3)">Lanjut: Jengkal →</button>
+    </div>
+
+  </div>
+</div>
+</div><!-- /slide2 -->
+
+
+<!-- ===================================================
+     SLIDE 3 – MATERI JENGKAL
+=================================================== -->
+<div class="slide" id="slide3">
+<div class="materi-page">
+
+  <div class="page-header">
+    <button class="page-header-back" onclick="showSlide(1)">← Beranda</button>
+    <div>
+      <div class="page-header-title">✋ Satuan Jengkal</div>
+      <div class="page-header-sub">Etnomatematika · Pengukuran Tradisional</div>
+    </div>
+    <div style="display:flex;gap:10px;margin-left:auto;">
+      <button style="background:transparent;border:1.5px solid rgba(201,168,76,0.4);color:var(--brown-pale);font-size:13px;border-radius:6px;" onclick="showSlide(2)">← Depa</button>
+      <button style="background:transparent;border:1.5px solid rgba(201,168,76,0.4);color:var(--brown-pale);font-size:13px;border-radius:6px;" onclick="showSlide(4)">Langkah →</button>
+    </div>
+  </div>
+
+  <div class="materi-inner">
+
+    <div class="materi-block">
+      <h2><span class="block-icon">📖</span> Apa Itu Jengkal?</h2>
+      <p>
+        <strong>Jengkal</strong> (atau <em>jengkalan</em>) adalah satuan panjang tradisional yang diukur dari
+        ujung ibu jari hingga ujung jari kelingking saat tangan dibentangkan selebar-lebarnya.
+        Satuan ini juga disebut <em>span</em> dalam bahasa Inggris.
+      </p>
+      <p>
+        Jengkal merupakan satuan yang sangat umum digunakan di hampir seluruh pelosok Nusantara —
+        dari Sabang sampai Merauke — untuk mengukur benda-benda kecil seperti kain, kayu, dan ukuran
+        kotak pada permainan tradisional termasuk engklek.
+      </p>
+      <ul>
+        <li>Satuan yang sangat praktis karena selalu tersedia di tangan</li>
+        <li>Biasa dipakai untuk mengukur kain, batik, dan perabot kecil</li>
+        <li>Nilai rata-rata: <strong>1 jengkal ≈ 22,5 cm</strong> (untuk tangan dewasa)</li>
+      </ul>
+      <div class="fact-box">
+        💡 Fakta: Dalam permainan engklek, ukuran kotak seringkali ditentukan menggunakan jengkal,
+        sehingga ukuran lapangan berbeda di setiap daerah tergantung tangan siapa yang mengukur!
+      </div>
+    </div>
+
+    <div class="materi-block">
+      <h2><span class="block-icon">📐</span> Rumus Konversi</h2>
+      <p>Untuk mengubah satuan jengkal ke sentimeter:</p>
+      <div class="formula-box">
+        <span>Centimeter = Jumlah Jengkal × 22,5</span>
+        <br><br>
+        Contoh: &nbsp; 4 jengkal = 4 × 22,5 = <span>90 cm</span>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🧮 Kalkulator Jengkal Interaktif</h2>
+      <label for="inputJengkal">Masukkan jumlah Jengkal:</label>
+      <input type="number" id="inputJengkal" placeholder="Contoh: 4" min="0" step="any">
+      <div class="result" id="hasilJengkal">0 cm</div>
+
+      <div class="canvas-wrap jengkal-canvas" id="jengkalCanvas" style="min-height:160px;"></div>
+      <div class="vis-label">Visualisasi jarak jengkal (ibu jari ke kelingking)</div>
+    </div>
+
+    <div class="materi-block soal-block">
+      <h2><span class="block-icon">🎮</span> Soal Cerita: Permainan Engklek</h2>
+
+      <div class="soal-item">
+        <h4>Soal 1</h4>
+        <div class="soal-text">
+          Ani membuat kotak engklek di tanah. Setiap sisi kotak berukuran <strong>4 jengkal</strong>.
+          Berapa keliling satu kotak dalam centimeter?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • 4 jengkal = 4 × 22,5 = 90 cm<br>
+          • Keliling persegi = 4 × sisi = 4 × 90 = <strong>360 cm</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 2</h4>
+        <div class="soal-text">
+          Lapangan engklek terdiri dari <strong>8 kotak</strong>. Masing-masing kotak memiliki panjang
+          <strong>3 jengkal</strong> dan lebar <strong>2 jengkal</strong>. Berapa total luas lapangan engklek
+          dalam centimeter persegi?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Panjang 1 kotak = 3 × 22,5 = 67,5 cm<br>
+          • Lebar 1 kotak = 2 × 22,5 = 45 cm<br>
+          • Luas 1 kotak = 67,5 × 45 = 3.037,5 cm²<br>
+          • Total luas = 8 × 3.037,5 = <strong>24.300 cm²</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 3</h4>
+        <div class="soal-text">
+          Rini mengukur batu gacuk (batu datar untuk engklek) menggunakan jengkal.
+          Batu tersebut panjangnya <strong>2 jengkal</strong>. Budi mengukur batu yang sama
+          dan mendapat <strong>1,5 jengkal</strong>. Mengapa hasilnya berbeda? Berapa selisih
+          panjang dalam cm jika jengkal Rini = 22 cm dan jengkal Budi = 24 cm?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Jawaban:</strong> Hasilnya berbeda karena jengkal adalah satuan <em>tidak baku</em> 
+          — ukurannya berbeda setiap orang.<br><br>
+          • Panjang menurut Rini = 2 × 22 = 44 cm<br>
+          • Panjang menurut Budi = 1,5 × 24 = 36 cm<br>
+          • Selisih = 44 − 36 = <strong>8 cm</strong><br><br>
+          Ini menunjukkan pentingnya satuan baku (cm, m) agar semua orang mendapat hasil yang sama!
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-btn">
+      <button onclick="showSlide(2)">← Depa</button>
+      <button onclick="showSlide(1)">Beranda</button>
+      <button class="btn-gold" onclick="showSlide(4)">Lanjut: Langkah →</button>
+    </div>
+
+  </div>
+</div>
+</div><!-- /slide3 -->
+
+
+<!-- ===================================================
+     SLIDE 4 – MATERI LANGKAH
+=================================================== -->
+<div class="slide" id="slide4">
+<div class="materi-page">
+
+  <div class="page-header">
+    <button class="page-header-back" onclick="showSlide(1)">← Beranda</button>
+    <div>
+      <div class="page-header-title">👟 Satuan Langkah</div>
+      <div class="page-header-sub">Etnomatematika · Pengukuran Tradisional</div>
+    </div>
+    <div style="display:flex;gap:10px;margin-left:auto;">
+      <button style="background:transparent;border:1.5px solid rgba(201,168,76,0.4);color:var(--brown-pale);font-size:13px;border-radius:6px;" onclick="showSlide(3)">← Jengkal</button>
+    </div>
+  </div>
+
+  <div class="materi-inner">
+
+    <div class="materi-block">
+      <h2><span class="block-icon">📖</span> Apa Itu Langkah?</h2>
+      <p>
+        <strong>Langkah</strong> adalah satuan panjang tradisional yang diukur dari jarak satu langkah kaki,
+        yaitu dari posisi kaki kiri (atau kanan) ke posisi kaki yang sama setelah satu siklus langkah penuh.
+        Langkah juga dikenal sebagai <em>pace</em> dalam tradisi pengukuran dunia.
+      </p>
+      <p>
+        Di Nusantara, satuan langkah sangat sering digunakan untuk mengukur jarak tempuh,
+        panjang jalan setapak, batas lahan, hingga menentukan pola permainan tradisional seperti engklek.
+      </p>
+      <ul>
+        <li>Sering digunakan untuk mengukur jarak antar rumah dan batas lahan</li>
+        <li>Berbeda dengan <em>tapak</em> (satu langkah) — langkah penuh = dua tapak</li>
+        <li>Nilai rata-rata: <strong>1 langkah ≈ 60 cm</strong> (untuk orang dewasa)</li>
+      </ul>
+      <div class="fact-box">
+        💡 Dalam permainan engklek, pemain harus bisa mengukur jarak lompatan dan batas kotak
+        menggunakan langkah agar permainan berlangsung adil untuk semua pemain.
+      </div>
+    </div>
+
+    <div class="materi-block">
+      <h2><span class="block-icon">📐</span> Rumus Konversi</h2>
+      <p>Untuk mengubah satuan langkah ke sentimeter:</p>
+      <div class="formula-box">
+        <span>Centimeter = Jumlah Langkah × 60</span>
+        <br><br>
+        Contoh: &nbsp; 5 langkah = 5 × 60 = <span>300 cm = 3 meter</span>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🧮 Kalkulator Langkah Interaktif</h2>
+      <label for="inputLangkah">Masukkan jumlah Langkah:</label>
+      <input type="number" id="inputLangkah" placeholder="Contoh: 3" min="0" step="any">
+      <div class="result" id="hasilLangkah">0 cm</div>
+
+      <div class="canvas-wrap langkah-canvas" id="langkahCanvas" style="height:200px;position:relative;overflow:hidden;">
+        <canvas id="walkCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;background:transparent;"></canvas>
+      </div>
+      <div class="vis-label">Visualisasi animasi langkah kaki</div>
+    </div>
+
+    <div class="materi-block soal-block">
+      <h2><span class="block-icon">🎮</span> Soal Cerita: Permainan Engklek</h2>
+
+      <div class="soal-item">
+        <h4>Soal 1</h4>
+        <div class="soal-text">
+          Lapangan engklek berbentuk persegi panjang dengan ukuran <strong>10 langkah × 4 langkah</strong>.
+          Berapa luas lapangan tersebut dalam meter persegi?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Panjang = 10 × 60 = 600 cm = 6 m<br>
+          • Lebar = 4 × 60 = 240 cm = 2,4 m<br>
+          • Luas = 6 × 2,4 = <strong>14,4 m²</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 2</h4>
+        <div class="soal-text">
+          Dalam satu putaran engklek, seorang pemain harus melompat dari kotak 1 sampai kotak 9 
+          (pergi) lalu kembali lagi (pulang). Setiap kotak berukuran <strong>1 langkah</strong>.
+          Berapa total jarak yang ditempuh pemain tersebut dalam centimeter?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Pergi: 9 kotak = 9 langkah<br>
+          • Pulang: 9 kotak = 9 langkah<br>
+          • Total = 18 langkah = 18 × 60 = <strong>1.080 cm = 10,8 meter</strong>
+        </div>
+      </div>
+
+      <div class="soal-item">
+        <h4>Soal 3</h4>
+        <div class="soal-text">
+          Dua tim bermain engklek. Tim A mengukur lapangan dengan langkah Joni (langkah Joni = 65 cm),
+          menghasilkan panjang <strong>8 langkah</strong>. Tim B ingin membuat lapangan sama panjang
+          menggunakan langkah Dini (langkah Dini = 52 cm). Berapa langkah yang diperlukan Tim B?
+        </div>
+        <button class="soal-toggle" onclick="toggleAnswer(this)">Lihat Jawaban</button>
+        <div class="soal-answer">
+          <strong>Langkah penyelesaian:</strong><br>
+          • Panjang lapangan Tim A = 8 × 65 = 520 cm<br>
+          • Langkah Tim B = 520 ÷ 52 = <strong>10 langkah</strong><br><br>
+          Ini contoh nyata mengapa satuan tidak baku bisa menyebabkan ketidaksesuaian!
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-btn">
+      <button onclick="showSlide(3)">← Jengkal</button>
+      <button onclick="showSlide(1)">Beranda</button>
+    </div>
+
+  </div>
+</div>
+</div><!-- /slide4 -->
+
+
+<script>
+
+/* ===== NAVIGASI ===== */
+function showSlide(n){
+    document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
+    document.getElementById("slide" + n).classList.add("active");
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ===== TOGGLE JAWABAN ===== */
+function toggleAnswer(btn){
+    const ans = btn.nextElementSibling;
+    const showing = ans.classList.toggle("show");
+    btn.textContent = showing ? "Sembunyikan Jawaban" : "Lihat Jawaban";
+}
+
+/* ===== KALKULATOR DEPA ===== */
+const inputDepa  = document.getElementById("inputDepa");
+const hasilDepa  = document.getElementById("hasilDepa");
+const arms       = document.getElementById("arms");
+
+inputDepa.addEventListener("input", function(){
+    let depa = parseFloat(inputDepa.value);
+    if(isNaN(depa) || depa < 0){
+        hasilDepa.innerText = "0 cm";
+        // arms.style.width = "100px";
+    depaCanvas.innerHTML = "";
+        return;
+    }
+    hasilDepa.innerText = (depa * 150).toLocaleString('id-ID') + " cm";
+    // arms.style.width = Math.min(100 + depa * 50, 280) + "px";
+  depaCanvas.innerHTML = "";
+  for(let i = 0; i < Math.ceil(depa); i++){
+    let item = document.createElement("img");
+    item.classList.add("depa-item");
+    item.src = "depa.png";
+    depaCanvas.appendChild(item);
+  }
+});
+
+/* ===== KALKULATOR JENGKAL ===== */
+const inputJengkal = document.getElementById("inputJengkal");
+const hasilJengkal = document.getElementById("hasilJengkal");
+const jengkalCanvas = document.getElementById("jengkalCanvas");
+const depaCanvas = document.getElementById("depaCanvas");
+inputJengkal.addEventListener("input", function(){
+    let jengkal = parseInt(inputJengkal.value);
+    if(isNaN(jengkal) || jengkal < 0){
+        hasilJengkal.innerText = "0 cm";
+        jengkalCanvas.innerHTML = "";
+        return;
+    }
+    let cm = jengkal * 22.5;
+    hasilJengkal.innerText = cm + " cm";
+    jengkalCanvas.innerHTML = "";
+    for(let i = 0; i < jengkal; i++){
+        let item = document.createElement("img");
+        item.classList.add("jengkal-item");
+        item.src = "jengkal.png";
+        jengkalCanvas.appendChild(item);
+    }
+});
+
+/* ===== KALKULATOR LANGKAH + ANIMASI ===== */
+const inputLangkah = document.getElementById("inputLangkah");
+const hasilLangkah = document.getElementById("hasilLangkah");
+const walkCanvas   = document.getElementById("walkCanvas");
+const ctx          = walkCanvas.getContext("2d");
+
+let animFrame = null;
+let walkPhase = 0;
+let figureX   = 0;
+let targetX   = 0;
+let totalSteps = 0;
+
+function resizeWalkCanvas(){
+    const container = walkCanvas.parentElement;
+    walkCanvas.width  = container.offsetWidth;
+    walkCanvas.height = container.offsetHeight;
+}
+resizeWalkCanvas();
+window.addEventListener("resize", resizeWalkCanvas);
+
+function solveIK(hipX, hipY, footX, footY, thighLen, shinLen, bendDir){
+    const dx = footX - hipX, dy = footY - hipY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    const clampDist = Math.min(dist, thighLen + shinLen - 1);
+    const dirAngle  = Math.atan2(dy, dx);
+    const cosA = (thighLen*thighLen + clampDist*clampDist - shinLen*shinLen) / (2*thighLen*clampDist);
+    const a = Math.acos(Math.max(-1, Math.min(1, cosA)));
+    const kneeAngle = dirAngle + bendDir * a;
+    return { kx: hipX + Math.cos(kneeAngle)*thighLen, ky: hipY + Math.sin(kneeAngle)*thighLen };
+}
+
+function drawFigure(x, phase, steps){
+    const W = walkCanvas.width, H = walkCanvas.height;
+    ctx.clearRect(0,0,W,H);
+    const groundY=H-30, thighLen=32, shinLen=30, bodyLen=40, upperArmLen=20, foreArmLen=17, headR=15;
+    const bobY   = -Math.abs(Math.sin(phase*Math.PI*2))*4;
+    const hipX=x, hipY=groundY-thighLen-shinLen+14+bobY;
+    const shoulderY=hipY-bodyLen, headCY=shoulderY-headR-3;
+
+    ctx.strokeStyle="rgba(141,110,99,0.5)"; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(20,groundY); ctx.lineTo(W-20,groundY); ctx.stroke();
+
+    for(let i=0;i<steps;i++){
+        const fx=55+i*58, side=(i%2===0)?-7:7;
+        ctx.fillStyle="rgba(92,64,51,0.22)";
+        ctx.beginPath(); ctx.ellipse(fx,groundY+8+side,12,5,0.2,0,Math.PI*2); ctx.fill();
+    }
+
+    const stride=26, t=phase*Math.PI*2;
+    const footAX=hipX+Math.sin(t)*stride, footAY=groundY;
+    const footBX=hipX-Math.sin(t)*stride, footBY=groundY;
+    const ikA=solveIK(hipX,hipY,footAX,footAY,thighLen,shinLen,footAX>=hipX?1:-1);
+    const ikB=solveIK(hipX,hipY,footBX,footBY,thighLen,shinLen,footBX>=hipX?1:-1);
+
+    const armSwing=Math.sin(t)*13;
+    const elbowAY=shoulderY+upperArmLen, elbowAX=x-armSwing*0.4, handAX=x-armSwing, handAY=elbowAY+foreArmLen;
+    const elbowBY=shoulderY+upperArmLen, elbowBX=x+armSwing*0.4, handBX=x+armSwing, handBY=elbowBY+foreArmLen;
+
+    ctx.lineCap="round"; ctx.lineJoin="round";
+    ctx.fillStyle="rgba(0,0,0,0.07)";
+    ctx.beginPath(); ctx.ellipse(x,groundY+4,20,5,0,0,Math.PI*2); ctx.fill();
+
+    ctx.strokeStyle="#8D6E63"; ctx.lineWidth=5;
+    ctx.beginPath(); ctx.moveTo(hipX,hipY); ctx.lineTo(ikB.kx,ikB.ky); ctx.lineTo(footBX,footBY); ctx.stroke();
+    ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(footBX-4,footBY); ctx.lineTo(footBX+10,footBY); ctx.stroke();
+
+    ctx.strokeStyle="#BCAAA4"; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(x,shoulderY); ctx.lineTo(elbowBX,elbowBY); ctx.lineTo(handBX,handBY); ctx.stroke();
+
+    ctx.strokeStyle="#5D4037"; ctx.lineWidth=6;
+    ctx.beginPath(); ctx.moveTo(x,shoulderY); ctx.lineTo(x,hipY); ctx.stroke();
+
+    ctx.strokeStyle="#5D4037"; ctx.lineWidth=5;
+    ctx.beginPath(); ctx.moveTo(hipX,hipY); ctx.lineTo(ikA.kx,ikA.ky); ctx.lineTo(footAX,footAY); ctx.stroke();
+    ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(footAX-4,footAY); ctx.lineTo(footAX+11,footAY); ctx.stroke();
+
+    ctx.strokeStyle="#795548"; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(x,shoulderY); ctx.lineTo(elbowAX,elbowAY); ctx.lineTo(handAX,handAY); ctx.stroke();
+
+    ctx.fillStyle="#4E342E";
+    ctx.beginPath(); ctx.arc(x,headCY,headR+2,Math.PI,0); ctx.fill();
+    ctx.fillStyle="#FFCC80"; ctx.strokeStyle="#5D4037"; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.arc(x,headCY,headR,0,Math.PI*2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle="#3E2723";
+    ctx.beginPath(); ctx.arc(x+5,headCY-3,2.5,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle="#5D4037"; ctx.lineWidth=1.8;
+    ctx.beginPath(); ctx.arc(x+3,headCY+2,5,0.2,Math.PI-0.2); ctx.stroke();
+}
+
+function animate(){
+    walkPhase = (walkPhase + 0.025) % 1;
+    figureX  += (targetX - figureX) * 0.06;
+    drawFigure(figureX, walkPhase, totalSteps);
+    animFrame = requestAnimationFrame(animate);
+}
+
+function startWalkAnimation(steps){
+    if(animFrame) cancelAnimationFrame(animFrame);
+    resizeWalkCanvas();
+    const W=walkCanvas.width, startX=60, endX=steps>0?Math.min(60+steps*55,W-40):startX;
+    figureX=startX; targetX=endX; walkPhase=0; totalSteps=steps;
+    animate();
+}
+
+resizeWalkCanvas(); figureX=60; targetX=60; totalSteps=0; drawFigure(60,0,0);
+
+inputLangkah.addEventListener("input", function(){
+    let langkah = parseInt(inputLangkah.value);
+    if(isNaN(langkah) || langkah < 0){
+        hasilLangkah.innerText = "0 cm";
+        if(animFrame) cancelAnimationFrame(animFrame);
+        resizeWalkCanvas(); figureX=60; totalSteps=0; drawFigure(60,0,0);
+        return;
+    }
+    hasilLangkah.innerText = (langkah * 60).toLocaleString('id-ID') + " cm";
+    startWalkAnimation(langkah);
+});
+
+</script>
+</body>
+</html>
